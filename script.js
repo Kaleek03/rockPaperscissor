@@ -1,19 +1,26 @@
 
+ function getcomputerChoice() {
+    const gameArray = ["Rock", "Paper", "Scissors"]
+    const randomizer = gameArray[(Math.random() * gameArray.length) | 0];
+    return randomizer
+    }
 
-function versus(playerSelection ){
+
+
+function versus(event){
     let computerChoice = getcomputerChoice();
 
-    if (computerChoice == "Rock" && playerSelection == "Rock" ) {
-        return `You chose ${playerSelection } I chose ${computerChoice } so Tie game`
+    if (computerChoice == "Rock" && event.target.value == "Rock" ) {
+        return `You chose ${event.target.value} I chose ${computerChoice } so Tie game`
     } 
-    else if (computerChoice == "Paper" && playerSelection == "Paper") {
-        return `You chose ${playerSelection } I chose ${computerChoice } so Tie game`
+    else if (computerChoice == "Paper" && event.target.value== "Paper") {
+        return `You chose ${event.target.value } I chose ${computerChoice } so Tie game`
     } 
-    else if (computerChoice == "Scissors" && playerSelection == "Scissors") {
-        return `You chose ${playerSelection } I chose ${computerChoice } so Tie game`
+    else if (computerChoice == "Scissors" && event.target.value == "Scissors") {
+        return `You chose ${event.target.value} I chose ${computerChoice } so Tie game`
     } 
-    else if(computerChoice == "Rock" && playerSelection == "Scissors") {
-        return `You chose ${playerSelection } I chose ${computerChoice } so I won!! and you LOST!`
+    else if(computerChoice == "Rock" && event.target.value == "Scissors") {
+        return `You chose ${event.target.value } I chose ${computerChoice } so I won!! and you LOST!`
     } 
     else if(computerChoice == "Rock" && playerSelection == "Paper") {
         return `You chose ${playerSelection } I chose ${computerChoice } so I lost! and you WON!!`
@@ -39,11 +46,11 @@ function versus(playerSelection ){
     else if (playerSelection == "Scissors" && computerChoice == "Scissors") {
         return `You chose ${playerSelection } I chose ${computerChoice } so You chose ${playerSelection } I chose ${computerChoice() } so Tie game`
     } 
-    else if(playerSelection == "Rock" && computerChoice == "Scissors") {
+    else if(playerSelection == 'Rock' && computerChoice == "Scissors") {
         return `You chose ${playerSelection } I chose ${computerChoice } so I lost! and you WON!!`
     } 
     else if(playerSelection == "Rock" && computerChoice == "Paper") {
-        return `You chose ${playerSelection } I chose ${computerChoice } so I won!! and you LOST!`
+        console.log(`You chose ${playerSelection } I chose ${computerChoice } so I won!! and you LOST!`)
     } 
     else if(playerSelection == "Paper" && computerChoice == "Rock") {
         return `You chose ${playerSelection } I chose ${computerChoice } so I lost! and you WON!!`
@@ -62,11 +69,7 @@ function versus(playerSelection ){
     }
  }
 
+ function extract(event) {
+    var playerSelection = event.target.value
+ }
 
- function getcomputerChoice() {
-    const gameArray = ["Rock", "Paper", "Scissors"]
-    const randomizer = gameArray[(Math.random() * gameArray.length) | 0];
-    return randomizer
-    }
-
-   
