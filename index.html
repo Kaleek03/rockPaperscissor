@@ -1,17 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-	<script src="sricpt.js">
+    <title>Roshambo</title>
+	<script>
+		var personScore = 0
+		var computerScore = 0
+		
+		function computerChoice() {
+			const options = ["Rock", "Paper", "Scissors"]
+			return options[(Math.random() * options.length) | 0]
+		}
+		
+		function showResult(person, computer, computerWon) {
+			if (computerWon) {
+				computerScore++
+			} else {
+				personScore++
+			}
+			var boast = computerWon ? "I won!! and you LOST!" : "I lost! and you WON!!"
+			document.getElementById("result").innerText = `You chose ${person} I chose ${computer} so ${boast}`
+			document.getElementById("person-score").innerText = personScore
+			document.getElementById("computer-score").innerText = computerScore
+		}
+
+		function versus(person) {			
+			var computer = computerChoice();
+			if (person == computer) {
+				// handle all ties the same way
+				showResult(`You chose ${person} I chose ${computer} so Tie game`)
+			} else if (person == "Rock") {
+				showResult(person, computer, computer == "Paper")
+			} else if (person == "Paper") {
+				showResult(person, computer, computer == "Scissors")
+			} else {
+				showResult(person, computer, computer == "Rock")
+			}
+		}
 	</script>
 </head>
 <body>
-    <button value="Rock" onclick="versus('Rock')">Rock</button>
-	<button value="Paper" onclick="versus('Paper')">Paper</button>
-	<button value="Scissors" onclick="versus('Scissors')">Scissors</button>
+    <button onclick="versus('Rock')">Rock</button>
+	<button onclick="versus('Paper')">Paper</button>
+	<button onclick="versus('Scissors')">Scissors</button>
 	<div id="result"></div>
+	<table border="1">
+		<tr>
+			<th>You</th><th>Computer</th>
+		</tr>
+		<tr>
+			<td id="person-score">0</td>
+			<td id="computer-score">0</td>
+		</tr>
+	</table>
 </body>
 </html>
