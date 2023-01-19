@@ -42,3 +42,16 @@ button {
     font-size: xx-large;
     color:azure
 }
+
+table {
+    background-color: black;
+    border-color: black;
+    border-spacing: 20px;
+    position: relative;
+    margin: auto;
+    width: 200px;
+    color:azure;
+    text-align: center;
+    font-size: xx-large;
+    bottom: 60px;
+}
