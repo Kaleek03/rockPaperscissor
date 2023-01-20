@@ -21,17 +21,31 @@
 			} else {
 				personScore++
 			}
-			var boast = computerWon ? "I won!! and you LOST!" : "I lost! and you WON!!"
-			document.getElementById("result").innerText = `You chose ${person} I chose ${computer} so ${boast}`
+			
+			var resultDiv = document.getElementById("result")
+			
+			// show final scores before possibly resetting them
 			document.getElementById("person-score").innerText = personScore
 			document.getElementById("computer-score").innerText = computerScore
+			
+			if (personScore == 5 || computerScore == 5) {
+				// somebody won — whoever scored the last point must be the winner
+				var winner = computerWon ? "I am" : "You are"
+				resultDiv.innerText = `${winner} the overall winner`
+				// now reset
+				personScore = 0
+				computerScore = 0
+			} else {
+				var boast = computerWon ? "I won!! and you LOST!" : "I lost! and you WON!!"
+				resultDiv.innerText = `You chose ${person} I chose ${computer} so ${boast}`
+			}
 		}
 
 		function versus(person) {			
 			var computer = computerChoice();
 			if (person == computer) {
 				// handle all ties the same way
-				showResult(`You chose ${person} I chose ${computer} so Tie game`)
+				document.getElementById("result").innerText = `You chose ${person} I chose ${computer} so Tie game`
 			} else if (person == "Rock") {
 				showResult(person, computer, computer == "Paper")
 			} else if (person == "Paper") {
@@ -43,13 +57,13 @@
 	</script>
 </head>
 <body>
-<div class="container">
+    <div class="container">
     <button onclick="versus('Rock')">Rock</button>
 	<button onclick="versus('Paper')">Paper</button>
 	<button onclick="versus('Scissors')">Scissors</button>
-</div>
-	<div id="result"></div>
-	<table border="1">
+    </div>
+	<div id="result">&nbsp;</div>
+	<table border="1" id="score-board">
 		<tr>
 			<th>You</th><th>Computer</th>
 		</tr>
@@ -59,4 +73,5 @@
 		</tr>
 	</table>
 </body>
+</html>
 </html>
